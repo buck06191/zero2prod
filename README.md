@@ -20,12 +20,14 @@ But the end of this process we should have fulfilled the following user stores:
   - So that I can stop receiving email updates from the blog.
 
 We will not add features to:
+
 - manage multiple newsletters;
 - segment subscribers in multiple audiences;
 - track opening and click rates
 
-
 ## Requirements
+
+### Inner Dev Loop
 
 There are some CI/development requirements for this work:
 
@@ -33,6 +35,16 @@ There are some CI/development requirements for this work:
 cargo install cargo-audit
 cargo install cargo-tarpaulin
 cargo install cargo-watch
+
+```
+
+### Database
+
+We run the database using `scripts/init_db.sh` which will start a postgres docker
+container. This also means we need Docker to be installed.
+
+```shell
+cargo install --version=0.5.7 sqlx-cli --no-default-features --features postgres
 
 ```
 
@@ -46,4 +58,3 @@ tasks:
 make watch
 
 ```
-
