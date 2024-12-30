@@ -21,11 +21,11 @@ path = "src/main.rs"
 name = "zero2prod"
 
 [dependencies]
+config = { version = "0.15", default-features = false, features = ["yaml"] }
 actix-web = "4"
 tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
 serde = { version = "1", features = ["derive"] }
 serde-aux = "4"
-config = { version = "0.14", efault-features = false, features = ["yaml"] }
 uuid = { version = "1", features = ["v4"] }
 chrono = { version = "0.4.22", default-features = false, features = ["clock"] }
 tracing = { version = "0.1", features = ["log"] }
@@ -33,9 +33,8 @@ tracing-subscriber = { version = "0.3", features = ["registry", "env-filter"] }
 tracing-bunyan-formatter = "0.3"
 tracing-log = "0.2"
 tracing-actix-web = "0.7"
-secrecy = { version = "0.8", features = ["serde"] }
-
-sqlx = { version = "0.7", default-features = false, features = [
+secrecy = { version = "0.10", features = ["serde"] }
+sqlx = { version = "0.8", default-features = false, features = [
   "runtime-tokio-rustls",
   "macros",
   "postgres",
@@ -43,7 +42,18 @@ sqlx = { version = "0.7", default-features = false, features = [
   "chrono",
   "migrate",
 ] }
+unicode-segmentation = "1"
+validator = "0.19"
 
 [dev-dependencies]
-reqwest = { version = "0.11.12", features = ["json"] }
+reqwest = { version = "0.12.11", features = ["json"] }
 once_cell = "1"
+sqlx-cli = { version = "0.8", default-features = false, features = [
+  "rustls",
+  "postgres",
+] }
+claims = "0.8"
+fake = "3.1.0"
+quickcheck = "1.0.3"
+quickcheck_macros = "1"
+rand = "0.8"
