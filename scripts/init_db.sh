@@ -10,7 +10,9 @@ if ! [ -x "$(command -v sqlx)" ]; then
   exit 1
 fi
 
-sudo service postgresql stop
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+  sudo service postgresql stop
+fi
 # Check if a custom parameter has been set, otherwise use default values
 DB_PORT="${DB_PORT:=5432}"
 SUPERUSER="${SUPERUSER:=postgres}"
